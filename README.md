@@ -137,10 +137,9 @@ For binary segmentation problems, just use folder 0.
 
 
 
-
 ### Train
 
-In train.py, replace these paths with your own dataset paths:
+In `train.py`, replace these paths with your own dataset paths:
 
 ```python
 train_path = r'YOUR_DATASET_PATH/image/train'
@@ -151,7 +150,7 @@ train_mask_dir = r'YOUR_DATASET_PATH/mask/train'
 
 val_img_dir = r'YOUR_DATASET_PATH/image/val'
 val_mask_dir = r'YOUR_DATASET_PATH/mask/val'
-```
+````
 
 Set the experiment name with `--name`. For example:
 
@@ -165,19 +164,18 @@ The trained model and logs will be saved in:
 models/fma_unext_exp/
 ```
 
-
 ### Validation
 
-In  val.py , replace these paths with your own validation dataset paths:
+In `val.py`, replace these paths with your own validation dataset paths:
 
 ```python
 val_path = r'YOUR_DATASET_PATH/image/val'
 
 val_img_dir = r'YOUR_DATASET_PATH/image/val'
 val_mask_dir = r'YOUR_DATASET_PATH/mask/val'
-````
+```
 
-The `--name` in  val.py  should be the same as the training experiment name, for example:
+The `--name` in `val.py` should be the same as the training experiment name, for example:
 
 ```python
 parser.add_argument('--name', default='fma_unext_exp',
@@ -195,6 +193,25 @@ The prediction results will be saved in:
 ```text
 outputs/fma_unext_exp/
 ```
+
+### Evaluation
+
+The evaluation metrics used in this project include **IoU**, **DSC**, and **Accuracy (Acc)**.
+
+* **IoU** and **DSC** are computed in `val.py` during validation.
+* **Acc** should be evaluated separately by running `acc_test.py`.
+
+After validation, you can evaluate Accuracy using:
+
+```bash
+python acc_test.py
+```
+
+Please make sure that the paths and model settings in `acc_test.py` are consistent with your trained experiment before running it.
+
+```
+```
+
 
 ## Reproducibility
 
