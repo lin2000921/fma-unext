@@ -23,7 +23,7 @@ from archs import UNext
 def parse_args():
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('--name', default='unext',
+    parser.add_argument('--name', default='fma-unext',
                         help='model name')
 
     args = parser.parse_args()
