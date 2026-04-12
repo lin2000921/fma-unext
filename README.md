@@ -196,6 +196,12 @@ The prediction results will be saved in:
 outputs/fma_unext_exp/
 ```
 
+## Reproducibility
+
+This repository provides the source code, environment configuration, training and validation scripts, and documentation required to reproduce the main experiments reported in the manuscript.
+
+Due to confidentiality restrictions related to ship hull condition data, the full dataset cannot be publicly released. However, the dataset organization, training procedure, and evaluation process are described in this repository to facilitate reproducibility.
+
 ---
 
 ### Acknowledgements
