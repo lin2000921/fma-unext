@@ -256,8 +256,8 @@ def main():
     # train_img_ids, val_img_ids = train_test_split(img_ids, test_size=0.2, random_state=41)
 
     # 手动指定训练集和验证集的路径
-    train_path = r'D:\UNeXt-pytorch-main\inputs\new_wusun\image\train'  # 训练集路径
-    val_path = r'D:\UNeXt-pytorch-main\inputs\new_wusun\image\val'  # 验证集路径
+    train_path = r'YOUR_DATASET_PATH/image/train'  # 训练集路径
+    val_path = r'YOUR_DATASET_PATH/image/val'  # 验证集路径
 
     # 获取训练集图片ID
     train_img_ids = glob(os.path.join(train_path, '*' + config['img_ext']))
@@ -298,11 +298,11 @@ def main():
     #     transform=val_transform)
 
     # 手动指定训练集和验证集的路径
-    train_img_dir = r'D:\UNeXt-pytorch-main\inputs\new_wusun\image\train'  # 训练集图片路径
-    train_mask_dir = r'D:\UNeXt-pytorch-main\inputs\new_wusun\mask\train'  # 训练集掩码路径
+    train_img_dir = r'YOUR_DATASET_PATH/image/train'  # 训练集图片路径
+    train_mask_dir = r'YOUR_DATASET_PATH/mask/train'  # 训练集掩码路径
 
-    val_img_dir = r'D:\UNeXt-pytorch-main\inputs\new_wusun\image\val'  # 验证集图片路径
-    val_mask_dir = r'D:\UNeXt-pytorch-main\inputs\new_wusun\mask\val'  # 验证集掩码路径
+    val_img_dir = r'YOUR_DATASET_PATH/image/val'  # 验证集图片路径
+    val_mask_dir = r'YOUR_DATASET_PATH/mask/val'  # 验证集掩码路径
 
     # 创建训练集 Dataset
     train_dataset = Dataset(
