@@ -5,7 +5,7 @@ from PIL import Image
 
 def calculate_pixel_accuracy(pred_mask, true_mask):
     """
-    计算单张图片的像素准确度 (Accuracy).
+    计算单张图片的像素准确度 (Accuracy)
 
     :param pred_mask: 预测的掩码（0/1或0-255值）
     :param true_mask: 真实的掩码（0/1或0-255值）
@@ -18,36 +18,17 @@ def calculate_pixel_accuracy(pred_mask, true_mask):
     return accuracy
 
 
-def calculate_iou(pred_mask, true_mask):
+def calculate_mean_accuracy(pred_masks, true_masks):
     """
-    计算单张图片的 IoU（Intersection over Union）
-
-    :param pred_mask: 预测的掩码（0/1）
-    :param true_mask: 真实的掩码（0/1）
-    :return: IoU 值
-    """
-    pred_mask = (pred_mask > 0.5).astype(np.uint8)
-    true_mask = (true_mask > 0.5).astype(np.uint8)
-
-    intersection = np.logical_and(pred_mask, true_mask).sum()
-    union = np.logical_or(pred_mask, true_mask).sum()
-
-    iou = intersection / union if union > 0 else 1.0  # 避免除零错误
-    return iou
-
-
-def calculate_mean_metrics(pred_masks, true_masks):
-    """
-    计算所有图片的平均像素准确度和 IoU
+    计算所有图片的平均像素准确度
 
     :param pred_masks: 预测掩码的列表
     :param true_masks: 真实掩码的列表
-    :return: 平均像素准确度, 平均 IoU
+    :return: 平均像素准确度
     """
     assert len(pred_masks) == len(true_masks), "预测掩码和真实掩码的数量必须相同"
 
     total_accuracy = 0.0
-    total_iou = 0.0
     num_masks = len(pred_masks)
 
     for i in range(num_masks):
@@ -55,11 +36,9 @@ def calculate_mean_metrics(pred_masks, true_masks):
         true_mask = np.array(true_masks[i])
 
         total_accuracy += calculate_pixel_accuracy(pred_mask, true_mask)
-        total_iou += calculate_iou(pred_mask, true_mask)
 
     mean_accuracy = total_accuracy / num_masks
-    mean_iou = total_iou / num_masks
-    return mean_accuracy, mean_iou
+    return mean_accuracy
 
 
 def read_images_from_folder(folder_path, file_extension=".png"):
@@ -89,11 +68,10 @@ def main():
     true_labels = read_images_from_folder(true_labels_folder)
     predicted_results = read_images_from_folder(predicted_results_folder)
 
-    # 计算所有图片的平均像素准确度和 IoU
-    mean_acc, mean_iou = calculate_mean_metrics(predicted_results, true_labels)
+    # 计算所有图片的平均像素准确度
+    mean_acc = calculate_mean_accuracy(predicted_results, true_labels)
 
     print(f"平均像素准确度：{mean_acc:.4f}")
-    print(f"平均 IoU：{mean_iou:.4f}")
 
 
 if __name__ == "__main__":
