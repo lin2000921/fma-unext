@@ -32,7 +32,7 @@ LOSS_NAMES.append('BCEWithLogitsLoss')
 def parse_args():
     parser = argparse.ArgumentParser()
 
-    parser.add_argument('--name', default='new_unext_ema2_emcad',
+    parser.add_argument('--name', default='fma_unext',
                         help='model name: (default: arch+timestamp)')
     parser.add_argument('--epochs', default=300, type=int, metavar='N',
                         help='number of total epochs to run')
