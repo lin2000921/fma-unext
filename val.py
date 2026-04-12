@@ -57,7 +57,7 @@ def main():
     #
     # _, val_img_ids = train_test_split(img_ids, test_size=0.2, random_state=41)
 
-    val_path = r'D:\UNeXt-pytorch-main\inputs\wusun\images\val'  # 验证集路径
+    val_path = r'YOUR_DATASET_PATH/image/val'  # 验证集路径
     val_img_ids = glob(os.path.join(val_path, '*' + config['img_ext']))
     val_img_ids = [os.path.splitext(os.path.basename(p))[0] for p in val_img_ids]
 
@@ -85,8 +85,8 @@ def main():
     #     num_workers=config['num_workers'],
     #     drop_last=False)
 
-    val_img_dir = r'D:\UNeXt-pytorch-main\inputs\wusun\images\val'  # 验证集图片路径
-    val_mask_dir = r'D:\UNeXt-pytorch-main\inputs\wusun\masks\val'  # 验证集掩码路径
+    val_img_dir = r'YOUR_DATASET_PATH/image/val'  # 验证集图片路径
+    val_mask_dir = r'YOUR_DATASET_PATH/mask/val'  # 验证集掩码路径
 
     val_dataset = Dataset(
         img_ids=val_img_ids,
