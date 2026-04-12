@@ -42,23 +42,6 @@ The proposed network consists of three key modules:
 
 ## Network Architecture
 
-The overall FMA-UNeXt framework includes:
-
-1. Encoder with FADC modules replacing standard convolutions
-2. Tokenized MLP module inherited from UNeXt
-3. EMA modules inserted after the encoder and after the tokenized MLP stage
-4. EMCAD decoder for multi-scale feature reconstruction
-
-```text
-Encoder (FADC) -> EMA -> Tokenized MLP -> EMA -> EMCAD Decoder -> Prediction
-```
-
-You can place your network structure figure in:
-
-```text
-figures/framework.png
-```
-
 <p align="center">
   <img src="imgs/fma-unext.png" width="800"/>
 </p>
@@ -97,7 +80,7 @@ To install all the dependencies using conda:
 
 ```bash
 conda env create -f environment.yml
-conda activate unext
+conda activate fma-unext
 ```
 
 If you prefer pip, install following versions:
@@ -110,48 +93,9 @@ torchvision==0.8.2
 opencv-python==4.5.1.48
 ```
 
----
-
-## Repository Structure
-
-```text
-FMA-UNeXt
-├── datasets
-│   └── <dataset_name>
-├── models
-├── losses
-├── utils
-├── configs
-├── outputs
-├── pretrained_weights
-├── figures
-├── train.py
-├── test.py
-├── infer.py
-├── environment.yml
-├── requirements.txt
-└── README.md
-```
-
----
-
 ## Dataset
 
-The dataset used in this study contains underwater hull fouling images captured by underwater cameras.
-
-Due to confidentiality restrictions related to ship hull condition data, the complete dataset cannot be publicly released.
-
-To facilitate reproducibility, this repository provides:
-
-* Dataset folder structure
-* Mask organization format
-* Data preprocessing pipeline
-* Data augmentation strategy
-* Training and evaluation scripts
-* Recommended train/validation/test split protocol
-
-The dataset used in the manuscript contains 800 underwater hull fouling images, which were expanded to 13,920 images through data augmentation.
-
+The dataset used in this study contains underwater hull fouling images captured by underwater cameras.Due to confidentiality restrictions related to ship hull condition data, the complete dataset cannot be publicly released.The dataset used in the manuscript contains 800 underwater hull fouling images, which were expanded to 13,920 images through data augmentation.
 The dataset was divided into training, validation, and test sets with a ratio of 8:1:1.
 
 ## Data Format
@@ -186,98 +130,74 @@ For binary segmentation problems, just use folder 0.
 ### Notes
 
 * Images and masks should have the same file names
-* Input images are resized to 256 × 256 before training
-* Masks are binary segmentation labels
 * Folder `0` and folder `1` represent different segmentation categories
 
 ---
 
-## Data Augmentation
 
-The following augmentation methods were used in the manuscript:
 
-* Random cropping
-* Translation transformation
-* Scaling transformation
-* Rotation transformation
-* Horizontal flipping
-* Vertical flipping
 
-These augmentations were applied to improve the robustness of the model under complex underwater environments.
 
----
+### Train
 
-## Training
+In train.py, replace these paths with your own dataset paths:
 
-Before training, please configure the dataset path and training parameters.
+```python
+train_path = r'YOUR_DATASET_PATH/image/train'
+val_path = r'YOUR_DATASET_PATH/image/val'
 
-Example:
+train_img_dir = r'YOUR_DATASET_PATH/image/train'
+train_mask_dir = r'YOUR_DATASET_PATH/mask/train'
 
-```bash
-python train.py --dataset hull_dataset --arch FMA_UNeXt
+val_img_dir = r'YOUR_DATASET_PATH/image/val'
+val_mask_dir = r'YOUR_DATASET_PATH/mask/val'
 ```
 
-Main training settings:
+Set the experiment name with `--name`. For example:
+
+```bash
+python train.py --dataset wusun --arch UNext --name fma_unext_exp --img_ext .png --mask_ext .png --lr 0.001 --epochs 300 --input_w 256 --input_h 256 -b 16
+```
+
+The trained model and logs will be saved in:
 
 ```text
-Epochs: 300
-Batch Size: 16
-Optimizer: Adam
-Initial Learning Rate: 0.001
-Input Size: 256 × 256
+models/fma_unext_exp/
 ```
 
----
 
-## Testing
+### Validation
 
-After training, evaluate the model using:
+In  val.py , replace these paths with your own validation dataset paths:
+
+```python
+val_path = r'YOUR_DATASET_PATH/image/val'
+
+val_img_dir = r'YOUR_DATASET_PATH/image/val'
+val_mask_dir = r'YOUR_DATASET_PATH/mask/val'
+````
+
+The `--name` in  val.py  should be the same as the training experiment name, for example:
+
+```python
+parser.add_argument('--name', default='fma_unext_exp',
+                    help='model name')
+```
+
+Or run directly:
 
 ```bash
-python test.py --dataset hull_dataset --weights pretrained_weights/fma_unext_best.pth
+python val.py --name fma_unext_exp
 ```
 
-The evaluation metrics include:
-
-* IoU
-* DSC
-* Accuracy
-
----
-
-## Inference
-
-For single-image or folder inference:
-
-```bash
-python infer.py --input demo_images --output outputs
-```
-
-Prediction results will be saved in the `outputs` folder.
-
----
-
----
-
-## Reproducibility Statement
-
-This repository is the official implementation of the manuscript currently submitted to *The Visual Computer*.
-
-To improve transparency and reproducibility, we provide:
-
-* Source code
-* Environment configuration
-* Training and testing scripts
-* Dataset organization instructions
-* Experimental settings
-* Evaluation metrics
-* Pretrained weights
-
-A permanent archived release with DOI will be provided through Zenodo.
+The prediction results will be saved in:
 
 ```text
-Zenodo DOI: Coming Soon
+outputs/fma_unext_exp/
 ```
+
+
+
 
 ---
 
@@ -303,6 +223,12 @@ Please add an open-source license for this repository, such as MIT License.
 ```text
 MIT License
 ```
+
+---
+
+### Acknowledgements
+
+This codebase adopts certain code blocks and helper functions from [UNeXt](https://github.com/jeya-maria-jose/UNeXt-pytorch). We sincerely thank the original authors for making their implementation publicly available.
 
 ---
 
