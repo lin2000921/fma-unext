@@ -196,34 +196,6 @@ The prediction results will be saved in:
 outputs/fma_unext_exp/
 ```
 
-
-
-
----
-
-## Citation
-
-If you use this repository in your work, please cite the corresponding manuscript:
-
-```bibtex
-@article{lin2026fmaunext,
-  title={Frequency-Adaptive and Multi-Scale Attention Network for Underwater Hull Fouling Segmentation},
-  author={Yihao Lin and Yajuan Gu and Lunming Qin and Liang Xue and Houqin Bian and Xi Wang},
-  journal={Under review at The Visual Computer},
-  year={2026}
-}
-```
-
----
-
-## License
-
-Please add an open-source license for this repository, such as MIT License.
-
-```text
-MIT License
-```
-
 ---
 
 ### Acknowledgements
@@ -237,4 +209,3 @@ This codebase adopts certain code blocks and helper functions from [UNeXt](https
 For questions related to the code or manuscript, please contact:
 
 * Yihao Lin: [linyihao@mail.shiep.edu.cn](mailto:linyihao@mail.shiep.edu.cn)
-* Lunming Qin: [lunming.qin@shiep.edu.cn](mailto:lunming.qin@shiep.edu.cn)
