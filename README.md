@@ -209,9 +209,6 @@ python acc_test.py
 
 Please make sure that the paths and model settings in `acc_test.py` are consistent with your trained experiment before running it.
 
-```
-```
-
 
 ## Reproducibility
 
