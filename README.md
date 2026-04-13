@@ -212,11 +212,16 @@ Please make sure that the paths and model settings in `acc_test.py` are consiste
 
 ## Reproducibility
 
-This repository provides the source code, environment configuration, training and validation scripts, and documentation required to reproduce the main experiments reported in the manuscript.
+This repository corresponds directly to the manuscript currently submitted to *The Visual Computer*.
 
-Due to confidentiality restrictions related to ship hull condition data, the full dataset cannot be publicly released. However, the dataset organization, training procedure, and evaluation process are described in this repository to facilitate reproducibility.
+The source code, documentation, and usage instructions for reproducing the experiments are publicly available in this repository.
 
----
+A permanent archived release of this repository is available on Zenodo.
+
+**DOI:** 10.5281/zenodo.19548017
+
+If you find this repository useful in your research, please consider citing the corresponding manuscript.
+
 
 ### Acknowledgements
 
