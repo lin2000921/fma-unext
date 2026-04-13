@@ -218,7 +218,7 @@ The source code, documentation, and usage instructions for reproducing the exper
 
 A permanent archived release of this repository is available on Zenodo.
 
-**DOI:** 10.5281/zenodo.19548017
+[![DOI](https://zenodo.org/badge/1015264596.svg)](https://doi.org/10.5281/zenodo.19548016)
 
 If you find this repository useful in your research, please consider citing the corresponding manuscript.
 
