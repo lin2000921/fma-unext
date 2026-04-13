@@ -1,4 +1,5 @@
 # FMA-UNeXt
+[![DOI](https://zenodo.org/badge/1015264596.svg)](https://doi.org/10.5281/zenodo.19548016)
 
 Official PyTorch implementation of the manuscript:
 
@@ -215,10 +216,6 @@ Please make sure that the paths and model settings in `acc_test.py` are consiste
 This repository corresponds directly to the manuscript currently submitted to *The Visual Computer*.
 
 The source code, documentation, and usage instructions for reproducing the experiments are publicly available in this repository.
-
-A permanent archived release of this repository is available on Zenodo.
-
-[![DOI](https://zenodo.org/badge/1015264596.svg)](https://doi.org/10.5281/zenodo.19548016)
 
 If you find this repository useful in your research, please consider citing the corresponding manuscript.
 
