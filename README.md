@@ -87,11 +87,7 @@ conda activate fma-unext
 If you prefer pip, install following versions:
 
 ```bash
-timm==0.3.2
-mmcv-full==1.2.7
-torch==1.7.1
-torchvision==0.8.2
-opencv-python==4.5.1.48
+pip install timm==0.3.2 mmcv-full==1.2.7 torch==1.7.1 torchvision==0.8.2 opencv-python==4.5.1.48
 ```
 
 ## Dataset
@@ -226,8 +222,14 @@ This codebase adopts certain code blocks and helper functions from [UNeXt](https
 
 ---
 
-## Contact
+## Citation
 
-For questions related to the code or manuscript, please contact:
+If you use this repository in your research, please cite the corresponding manuscript:
 
-* Yihao Lin: [linyihao@mail.shiep.edu.cn](mailto:linyihao@mail.shiep.edu.cn)
+```bibtex
+@article{lin2026fmaunext,
+  title={Frequency-Adaptive and Multi-Scale Attention Network for Underwater Hull Fouling Segmentation},
+  author={Yihao Lin and Yajuan Gu and Lunming Qin and Liang Xue and Houqin Bian and Xi Wang},
+  note={Unpublished manuscript},
+  year={2026}
+}
