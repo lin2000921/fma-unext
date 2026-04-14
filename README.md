@@ -220,7 +220,7 @@ If you find this repository useful in your research, please consider citing the 
 
 This codebase adopts certain code blocks and helper functions from [UNeXt](https://github.com/jeya-maria-jose/UNeXt-pytorch). We sincerely thank the original authors for making their implementation publicly available.
 
----
+
 
 ## Citation
 
